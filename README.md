@@ -2,7 +2,7 @@
 DATABASE MANAGEMENT SYSTEM
 The system can be considered a social platform for the gaming community which allows users to purchase games, play games,
 and interact with one another. The system is meant to resemble the social gaming platform Steam. 
-The fundamental idea is to have a database where several users can search and purchase games, 
+The fundamental idea is to have a database where several users can search and purchase games,
 along with giving reviews and ratings for the game. Moreover, the users using the system shall also be allowed to interact with one another through a messaging platform.
 This will allow them to message one another individually or in group chats.
 
