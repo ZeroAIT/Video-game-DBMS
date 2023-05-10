@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="plat.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Platform-Details</title>
+</head>
+<body>
+    <div class="banner">
+        <div class="menu">
+            <a href="index.html" class="cancel"><i class="material-icons" style="font-size:36px">cancel</i></a>
+            <a href="game.html" class="previous round">&#8249;</a>
+            <a href="play.html" class="next round">&#8250;</a>
+        </div>
+            <img src="images/l4.png" class="logo">
+        <div class="content">
+            <h1>PLATFORM-DETAILS</h1>
+            <p>
+                <form action="plat.php" method="post">
+                    <p>Platform:
+                        <select id="plat" name="plat">
+                            <option selected disabled>---Select Platform---</option>
+                            <option value="PLAYSTATION">PlayStation</option>
+                            <option value="XBOX">Microsoft's Xbox</option>
+                            <option value="NINTENDO">Nintendo's Switch</option>
+                            <option value="PC">PC</option>
+                            <option value="MOBILE">Mobile</option>
+                        </select>
+                    </p>
+                    <p>PlatformID:<input type="text" name="platid" id="platid"></p>
+                    <p>Platform Price:<input type="text" name="price" id="price"></p>
+                    <p>Release Year:<input type="text" name="r_year" id="year"></p>
+                    <p>GameID:<input type="text" name="gameid" id="gameid"></p>
+                    <p>
+                        <input type="submit" label="submit" name="submit"> <input type="reset" label="reset"
+                        name="reset"> 
+                    </p>
+                </form>        
+            </p>
+        </div>
+    </div>
+</body>
+</html>

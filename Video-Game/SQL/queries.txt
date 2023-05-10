@@ -1,0 +1,184 @@
+///CREATION OF TABLES///
+1)Genre table
+
+CREATE TABLE Genre(
+    genre varchar(30) NOT NULL,
+    genreid int(10) PRIMARY KEY);
+
+2)Game table
+
+CREATE TABLE Game(
+    gameid int(10) PRIMARY KEY AUTO_INCREMENT,
+    gname varchar(30) NOT NULL,
+    publisher varchar(30),
+    genreid int(10) NOT NULL,
+    FOREIGN KEY (genreid) REFERENCES genre(genreid));
+
+3)Platform table
+
+CREATE TABLE platform(
+    plat varchar(30) NOT NULL,
+    platid int(10) PRIMARY KEY);
+
+4)Game_platform table
+
+CREATE TABLE game_platform(
+    gpid int(10) NOT NULL,
+    price int(10),
+    r_year int(5) NOT NULL,
+    platid int(10) NOT NULL,
+    gameid int(10) NOT NULL,
+    PRIMARY KEY(gpid),
+    FOREIGN KEY (platid) REFERENCES platform(platid),
+    FOREIGN KEY (gameid) REFERENCES game(gameid));
+
+5)Player table
+
+CREATE TABLE player(
+    userid int(10) PRIMARY KEY,
+    username varchar(30) NOT NULL,
+    password varchar(20) NOT NULL,
+    nickname varchar(30),
+    email varchar(30) NOT NULL);
+
+6)Reviews table
+
+CREATE TABLE reviews(
+    rating int(2) NOT NULL,
+    comments varchar(30),
+    userid int(10) NOT NULL,
+    gpid int(10) NOT NULL,
+    FOREIGN KEY (userid) REFERENCES player(userid),
+    FOREIGN KEY (gpid) REFERENCES game_platform(gpid));
+
+
+////INSERTION OF RECORDS////
+
+1)Genre table
+
+INSERT INTO `genre` (`genre`, `genreid`) VALUES ('strategy', '101'), 
+('racing', '102'), ('action', '103'), ('adventure', '104'), ('sports', '105');
+
+
+2)Game table
+
+INSERT INTO `game` (`gameid`, `gname`, `publisher`, `genreid`) 
+VALUES ('1', 'VALORANT', 'RIOTGAMES', '103'), 
+('2', 'CLASH OF CLANS', 'SUPERCELL', '101'), 
+('3', 'PUBG', 'KRAFTON', '103'), 
+('4', 'AGE OF EMPIRES', 'MICROSOFT', '101'), 
+('5', 'CANDY CRUSH SAGA', 'KING', '101'), 
+('6', 'CALL OF DUTY', 'ACTIVISION', '103'), 
+('7', 'MAD DOG', 'AMERICAN LASER GAMES', '104'),
+ ('8', 'DR DRIVING', 'SUD INC', '102'), 
+('9', 'AMONG US', 'INNERSLOTH LLC', '101'), 
+('10', 'MINECRAFT', 'MOJANG STUDIOS', '104'), 
+('11', 'ROCKET LEAGUE', 'PSYONIX', '105'), 
+('12', 'FIFA 21', 'EA SPORTS', '105'),
+ ('13', 'NBA 2K22', '2K SPORTS', '105'), 
+('14', 'NEED FOR SPEED', 'EA SPORTS', '102'),
+ ('15', 'ASPHALT 8', 'SOFTONIC', '102');
+
+3)Platform table
+
+INSERT INTO `platform` (`plat`, `platid`) VALUES ('PLAYSTATION', '201'), 
+('XBOX', '202'), ('NINTENDO', '203'), ('PC', '204'), ('MOBILE', '205');
+
+
+4)Game_Platform table
+
+INSERT INTO `game_platform`VALUES (301,720,2020,203,10), (302,0,2021,201,10),  
+ (304,1000,2022,205,10),(305,400,2020,201,9),
+(306,300,2019,205,9),(307,1200,2023,202,9),
+(308,800,2022,204,9),(309,50,2018,205,3),
+(310,900,2020,204,3),(311,100,2015,205,2),
+(312,0,2019,204,1),(313,0,2023,205,1),
+(314,500,2010,205,5),(315,0,2007,204,4),
+(316,0,2012,205,8),(317,100,2018,205,6),
+(318,300,2020,204,6),(319,190,2017,205,15),
+(320,567,2020,204,11);
+
+5)Player table
+
+INSERT INTO `player` (`userid`, `username`, `password`, `nickname`, `email`) 
+VALUES ('501', 'PRAJWAL', '12345678', 'PRAJU', 'PRAJWAL@gmail.com'), 
+('502', 'POOJA KONDURI', '12345678', 'POOJA', 'POOJA@gmail.com'), 
+('503', 'PRAJWAL HUKKERI', '12345678', 'PRAJWAL', 'PRAJWAL@gmail.com'), 
+('504', 'POOJA R SUVARNA', '12345678', 'POOJA', 'POOJA@gmail.com'),
+ ('505', 'PRAJWAL PRL', '12345678', 'PRL', 'PRL@gmail.com'),
+ ('506', 'NIKHIL NAVEEN NAVALI', '12345678', 'NIKHIL', 'NIKHIL@gmail.com'),
+ ('507', 'LIKITH G', '12345678', 'LIKITH', 'LIKITH@gmail.com'), 
+('508', 'SUDHANSHA', '12345678', 'SUDHAN', 'SUDHAN@gmail.com'), 
+('509', 'MADHULEE', '12345678', 'MADHU', 'MADHU@gmail.com'), 
+('510', 'MAHENDER PATEL', '12345678', 'RODPATEL', 'RODPATEL@gmail.com'),
+ ('511', 'MADHUSUDHAN S', '12345678', 'MADHU', 'MADHU@gmail.com'),
+ ('512', 'MANJUNATH BN', '12345678', 'MANJA', 'MANJA@gmail.com'),
+ ('513', 'MOUINUDDIN', '12345678', 'MOUIN', 'MOUIN@gmail.com'), 
+('514', 'NUTHAN NAIDU', '12345678', 'NAIDU', 'NAIDU@gmail.com'), 
+('515', 'PAVAN REDDY', '12345678', 'REDDY', 'REDDY@gmail.com');
+
+6)Reviews table
+
+INSERT INTO `reviews` (`rating`, `comments`, `userid`, `gpid`) 
+VALUES ('5', 'NICE ONE', '501', '309'), 
+('4', 'VERY GOOD', '503', '312'), 
+('2', 'NOT SO BAD', '512', '317'), 
+('3', 'OKAY', '510', '307'), 
+('1', 'IMPROVEMENT NEEDED', '504', '314'), 
+('1', 'CAN BE BETTER', '514', '320'), 
+('1', 'BAD ONE', '511', '313'),
+ ('5', 'GOOD ', '515', '311'), 
+('5', 'EXCELLENT', '502', '303');
+
+
+///QUERIES////
+
+1)USING INNER JOIN (JOINING GAME AND GENRE TABLE)
+
+SELECT game.genreid, genre.genre, game.gname 
+FROM game 
+INNER JOIN genre ON game.genreid=genre.genreid;
+
+2)RETRIEVING PUBLISHER NAME OF MOBILE GAMES
+
+SELECT DISTINCT publisher 
+FROM game,game_platform,platform 
+WHERE game_platform.gameid=game.gameid AND platform.platid=205;
+
+3)Player details who have given 5 rating for the games they have played
+
+SELECT * FROM player 
+WHERE userid 
+IN (SELECT userid FROM reviews where rating=5);
+
+4)Number of each platform of all games
+
+SELECT plat, (SELECT COUNT(*) 
+FROM game_platform WHERE game_platform.platid=platform.platid) 
+AS platform_count FROM platform;
+
+5)List of players who have given review and played games inlucding game name,game platform and its price
+
+
+SELECT G.gname,U.username,P.plat,GP.price 
+FROM game G,player U,game_platform GP,platform P,reviews R 
+WHERE G.gameid=GP.gameid AND GP.platid=P.platid AND R.gpid=GP.gpid AND U.userid=R.userid;
+
+
+6)Players who have played game and reviewed them by giving rating above 1(including comments)
+
+SELECT P.username,R.comments 
+FROM player P,reviews R 
+WHERE P.userid=R.userid AND R.rating>1;
+
+7)List of players who have given review and played games inlucding game name,game platform and its price
+gname in descending,username in ascending,platform name in ascending and price in descending order
+
+
+SELECT G.gname,U.username,P.plat,GP.price 
+FROM game G,player U,game_platform GP,platform P,reviews R 
+WHERE G.gameid=GP.gameid AND GP.platid=P.platid AND R.gpid=GP.gpid AND U.userid=R.userid 
+ORDER BY G.gname DESC,U.username ASC,P.plat ASC,GP.price DESC;
+
+8)
+

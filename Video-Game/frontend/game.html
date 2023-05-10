@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="game.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Game-Details</title>
+</head>
+
+<body >
+    <div class="banner">
+        <div class="menu">
+            <a href="index.html" class="cancel"><i class="material-icons" style="font-size:36px">cancel</i></a>
+            <a href="home.html" class="previous round">&#8249;</a>
+            <a href="plat.html" class="next round">&#8250;</a>
+        </div>
+            <img src="images/l3.png" class="logo">
+        <div class="content">
+            <h1>GAME-DETAILS</h1>
+            <p>
+                <form action="game.php" method="post">
+                    <p>Enter Game:<input type="text" name="game" id="game"></p>
+                    <p>Genre:
+                        <select id="genre" name="genre">
+                            <option selected disabled>---Select Genre name---</option>
+                            <option value="STRATEGY">Strategy</option>
+                            <option value="RACING">Racing</option>
+                            <option value="ACTION">Action</option>
+                            <option value="ADVENTURE">Adventure</option>
+                            <option value="SPORTS">Sports</option>
+                        </select>
+                    </p >
+                    <p>GenreID:<input type="text" name="genreid" id="genreid"></p>
+                    <p>Game Publisher:<input type="text" name="pub" id="pub"></p>
+                    <p>
+                        <input type="submit" label="submit" name="submit"> <input type="reset" label="reset"
+                        name="reset"> 
+                    </p>
+                </form>        
+            </p>
+        </div>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="rev.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Reviews</title>
+</head>
+<body>
+    <div class="banner">
+        <div class="menu">
+            <a href="index.html" class="cancel"><i class="material-icons" style="font-size:36px">cancel</i></a>
+            <a href="play.html" class="previous round">&#8249;</a>
+            <a href="home.html" class="next round">&#8250;</a>
+        </div>
+            <img src="images/l6.png" class="logo">
+        <div class="content">
+            <h1>REVIEWS</h1>
+            <p>
+                <form action="rev.php" method="post">
+                    <p>Rating:<input type="text" name="rate" id="rate"></p>
+                    <p>Comments:<input type="text" name="rev" id="rev"></p>
+                    <p>GamePlatformID:<input type="text" name="gpid" id="gpid"></p>
+                    <p>UserID:<input type="text" name="userid" id="userid"></p>
+                    <p>
+                        <input type="submit" label="submit" name="submit"> <input type="reset" label="reset"
+                        name="reset"> 
+                    </p>
+                </form>        
+            </p>
+        </div>
+    </div>
+    
+</body>
+</html>
